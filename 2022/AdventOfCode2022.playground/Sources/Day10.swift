@@ -28,7 +28,7 @@ public class Day10: Day {
             if crtLines[crtLines.count-1].count == 40 {
                 crtLines.append(lit ? "#" : ".")
             } else {
-                crtLines[crtLines.count-1].append(lit ? "#" : ".")
+                crtLines[crtLines.count-1].append(lit ? "█" : " ")
             }
             cycle += 1
             if [20, 60, 100, 140, 180, 220].contains(cycle) {
