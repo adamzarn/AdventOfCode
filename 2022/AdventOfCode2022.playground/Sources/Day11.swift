@@ -26,6 +26,7 @@ public class Day11: Day {
         for monkey in monkeys {
             mod *= monkey.testValue
         }
+        print(mod)
         for _ in 1...10000 {
             for monkey in monkeys {
                 while !monkey.items.isEmpty {
@@ -58,6 +59,7 @@ public class Day11: Day {
                     monkey.items.removeFirst()
                 }
             }
+            print(monkeys.map { $0.items })
         }
         let sortedInspectionCounts = monkeys.map { $0.inspectedItems }.sorted(by: { $0 > $1 })
         print(sortedInspectionCounts[0]*sortedInspectionCounts[1])
