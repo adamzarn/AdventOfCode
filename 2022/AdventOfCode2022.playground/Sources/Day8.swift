@@ -3,7 +3,7 @@ import Foundation
 public class Day8: Day {
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let lines = string.components(separatedBy: "\n").dropLast()
+        let lines = string.components(separatedBy: "\n")
         let size = lines.count
         var dictionary: [String: Bool] = [:]
         // check visible from left

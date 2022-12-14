@@ -3,7 +3,7 @@ import Foundation
 public class Day2: Day {
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let games = string.components(separatedBy: "\n").dropLast()
+        let games = string.components(separatedBy: "\n")
         let letterPairs = games.compactMap { game -> (Letter, Letter)? in
             let letters = game.components(separatedBy: " ")
             guard let letter1 = Letter(rawValue: letters[0]) else { return nil }

@@ -3,7 +3,7 @@ import Foundation
 public class Day10: Day {
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let lines = string.components(separatedBy: "\n").dropLast()
+        let lines = string.components(separatedBy: "\n")
         var queue: [(Int, Int)] = []
         for line in lines {
             let components = line.components(separatedBy: " ")

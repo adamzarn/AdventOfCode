@@ -28,7 +28,7 @@ public class Day5: Day {
     public static func run() {
         let partOne: Bool = true
         guard let string = getInputString() else { exit(0) }
-        let lines = string.components(separatedBy: "\n").dropLast()
+        let lines = string.components(separatedBy: "\n")
         for line in lines {
             let components = line.components(separatedBy: ["move ", " from ", " to "]).compactMap { Int($0) }
             let numberToMove = components[0]

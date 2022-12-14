@@ -3,7 +3,7 @@ import Foundation
 public class Day4: Day {
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let lines = string.components(separatedBy: "\n").dropLast()
+        let lines = string.components(separatedBy: "\n")
         var fullyContainedCount = 0
         var overlappingCount = 0
         for line in lines {

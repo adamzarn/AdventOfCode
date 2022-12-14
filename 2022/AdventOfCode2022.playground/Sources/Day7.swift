@@ -6,7 +6,7 @@ public class Day7: Day {
     
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let lines = string.components(separatedBy: "\n").dropLast()
+        let lines = string.components(separatedBy: "\n")
         
         var dictionary: [String: Int] = [:]
         // Create Dictionary

@@ -16,7 +16,7 @@ public class Day13: Day {
         print(sum)
         
         // Part Two
-        var lines = string.replacingOccurrences(of: "\n\n", with: "\n").dropLast().components(separatedBy: "\n")
+        var lines = string.replacingOccurrences(of: "\n\n", with: "\n").components(separatedBy: "\n")
         lines.append(contentsOf: ["[[2]]", "[[6]]"])
         let sortedLines = lines.sorted(by: { line1, line2 in
             return compare(x: line1.asJson, y: line2.asJson) < 0

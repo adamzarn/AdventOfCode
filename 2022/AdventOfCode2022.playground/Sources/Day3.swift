@@ -3,7 +3,7 @@ import Foundation
 public class Day3: Day {
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let rucksacks = string.components(separatedBy: "\n").dropLast()
+        let rucksacks = string.components(separatedBy: "\n")
         var sum1 = 0
         for rucksack in rucksacks {
             let c1 = Set(rucksack.prefix(rucksack.count/2))

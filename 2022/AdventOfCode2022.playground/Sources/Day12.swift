@@ -8,7 +8,7 @@ public class Day12: Day {
     
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let lines: [String] = string.components(separatedBy: "\n").dropLast()
+        let lines: [String] = string.components(separatedBy: "\n")
         var partOne: Bool = true
         var grid: [Int: [Int: Int]] = [:]
         var startingPositions: [(Int, Int)] = []

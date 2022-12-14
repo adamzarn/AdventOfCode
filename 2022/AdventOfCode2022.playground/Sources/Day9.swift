@@ -3,7 +3,7 @@ import Foundation
 public class Day9: Day {
     public static func run() {
         guard let string = getInputString() else { exit(0) }
-        let lines = string.components(separatedBy: "\n").dropLast()
+        let lines = string.components(separatedBy: "\n")
         let partOne: Bool = true
         var headPosition: (Int, Int) = (0, 0)
         var tailPositions: [(Int, Int)] = Array(repeating: (0,0), count: partOne ? 1 : 9)
