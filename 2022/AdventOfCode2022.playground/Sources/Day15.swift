@@ -84,3 +84,4 @@ public class Day15: Day {
         return abs(pair1.x - pair2.x) + abs(pair1.y - pair2.y)
     }
 }
+    
