@@ -52,7 +52,7 @@ public class Day16: Day {
             }
         }
         
-        // print(getMaxValue(30, "AA", ""))
+        print(getMaxValue(30, "AA", ""))
 
         // Part Two
         let nonEmptyValves = flowRates.filter { $0.1 != 0 }.map { $0.0 }.sorted()
