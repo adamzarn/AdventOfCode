@@ -16,6 +16,7 @@ public class Day17: Day {
     var fallingRockPosition: Set<Pair>!
     var seen: [String: (Int, Int)] = [:]
     var jump: Int = 0
+    var windIndex = 0
     
     let oneTrillion = 1_000_000_000_000
     
@@ -23,52 +24,47 @@ public class Day17: Day {
         let windGusts = input.asArray
         fallingRockPosition = addNewRock(rocks[0]!)
         while rockCount < oneTrillion {
-            for (windIndex, windGust) in windGusts.enumerated() {
-                if windGust == ">" {
-                    if canMoveHorizontally(fallingRockPosition, x: 1) {
-                        fallingRockPosition = moveHorizontally(fallingRockPosition, x: 1)
-                    }
-                } else if windGust == "<" {
-                    if canMoveHorizontally(fallingRockPosition, x: -1) {
-                        fallingRockPosition = moveHorizontally(fallingRockPosition, x: -1)
-                    }
-                }
-                if canMoveDown(fallingRockPosition) {
-                    fallingRockPosition = moveDown(fallingRockPosition)
-                } else {
-                    for pair in fallingRockPosition {
-                        if pair.y > height {
-                            height = pair.y
-                        }
-                    }
-                    for pair in fallingRockPosition {
-                        if takenPositions[pair.y] == nil {
-                            takenPositions[pair.y] = [:]
-                            takenPositions[pair.y]![pair.x] = true
-                        } else {
-                            takenPositions[pair.y]![pair.x] = true
-                        }
-                    }
-                    rockCount += 1
-                    if rockCount > oneTrillion {
-                        break
-                    }
-                    fallingRockPosition = addNewRock(rocks[rockCount % 5]!)
-                    let key = "\(windIndex)_\(rockCount % 5)_\(snapshot(rows: 1))"
-                    if let (lastRockCount, lastHeight) = seen[key] {
-                        let rocksInPattern = rockCount - lastRockCount
-                        let heightOfPattern = height - lastHeight
-                        let rocksLeft = oneTrillion - rockCount
-                        let repititions = rocksLeft / rocksInPattern
-                        jump = repititions * heightOfPattern
-                        rockCount += repititions * rocksInPattern
-                        seen = [:]
-                    }
-                    seen[key] = (rockCount, height)
-                }
+            let windGust = windGusts[windIndex % windGusts.count]
+            let xOffset = windGust == ">" ? 1 : -1
+            if canMoveHorizontally(fallingRockPosition, x: xOffset) {
+                fallingRockPosition = moveHorizontally(fallingRockPosition, x: xOffset)
             }
+            if canMoveDown(fallingRockPosition) {
+                fallingRockPosition = moveDown(fallingRockPosition)
+            } else {
+                for pair in fallingRockPosition {
+                    if pair.y > height {
+                        height = pair.y
+                    }
+                }
+                for pair in fallingRockPosition {
+                    if takenPositions[pair.y] == nil {
+                        takenPositions[pair.y] = [:]
+                        takenPositions[pair.y]![pair.x] = true
+                    } else {
+                        takenPositions[pair.y]![pair.x] = true
+                    }
+                }
+                rockCount += 1
+                if rockCount > oneTrillion {
+                    break
+                }
+                fallingRockPosition = addNewRock(rocks[rockCount % 5]!)
+                let key = "\(windIndex % windGusts.count)_\(rockCount % 5)_\(snapshot(rows: 1))"
+                if let (lastRockCount, lastHeight) = seen[key] {
+                    let rocksInPattern = rockCount - lastRockCount
+                    let heightOfPattern = height - lastHeight
+                    let rocksLeft = oneTrillion - rockCount
+                    let repititions = rocksLeft / rocksInPattern
+                    jump = repititions * heightOfPattern
+                    rockCount += repititions * rocksInPattern
+                    seen = [:]
+                }
+                seen[key] = (rockCount, height)
+            }
+            windIndex += 1
         }
-        print(height - 1 + jump)
+        print(height + jump)
     }
     
     func snapshot(rows: Int) -> String {
