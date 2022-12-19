@@ -1,7 +1,7 @@
 import Foundation
 
-printTimeElapsedWhenRunningCode(title: "Day16") {
-    Day16().run()
+printTimeElapsedWhenRunningCode(title: "Day17") {
+    Day17().run()
 }
 
 func printTimeElapsedWhenRunningCode(title: String, operation: () -> Void) {

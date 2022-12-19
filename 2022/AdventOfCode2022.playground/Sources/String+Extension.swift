@@ -1,6 +1,10 @@
 import Foundation
 
 public extension String {
+    var asArray: [String] {
+        return map { String($0) }
+    }
+    
     static var alphabet: [String] {
         "abcdefghijklmnopqrstuvwxyz".map { String($0) }
     }
