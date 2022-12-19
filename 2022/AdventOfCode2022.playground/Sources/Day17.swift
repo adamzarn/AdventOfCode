@@ -19,11 +19,12 @@ public class Day17: Day {
     var windIndex = 0
     
     let oneTrillion = 1_000_000_000_000
+    let partOne = false
     
     public func run() {
         let windGusts = input.asArray
         fallingRockPosition = addNewRock(rocks[0]!)
-        while rockCount < oneTrillion {
+        while rockCount < (partOne ? 2022 : oneTrillion) {
             let windGust = windGusts[windIndex % windGusts.count]
             let xOffset = windGust == ">" ? 1 : -1
             if canMoveHorizontally(fallingRockPosition, x: xOffset) {
